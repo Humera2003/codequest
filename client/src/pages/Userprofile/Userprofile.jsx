@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Leftsidebar from '../../Comnponent/Leftsidebar/Leftsidebar'
-import { useParams } from 'react-router-dom'
+import Maps from '../../Comnponent/Maps/maps'
+import { useParams, Link } from 'react-router-dom'
 import moment from 'moment'
 import { useSelector } from 'react-redux'
 import Avatar from '../../Comnponent/Avatar/Avatar'
@@ -14,7 +15,7 @@ const Userprofile = ({ slidein }) => {
   const users = useSelector((state) => state.usersreducer)
   const currentprofile = users.filter((user) => user._id === id)[0]
   const currentuser = useSelector((state) => state.currentuserreducer)
-  // console.log(currentuser._id)
+
   return (
     <div className="home-container-1">
       <Leftsidebar slidein={slidein} />
@@ -22,7 +23,7 @@ const Userprofile = ({ slidein }) => {
         <section>
           <div className="user-details-container">
             <div className="user-details">
-              <Avatar backgroundColor="purple" color="white" fontSize="50px" px="40px" py="30px">{currentprofile.name.charAt(0).toUpperCase()}</Avatar>
+              <Avatar backgroundColor="purple" color="white" fontSize="50px" px="40px" py="30px">{currentprofile?.name.charAt(0).toUpperCase()}</Avatar>
               <div className="user-name">
                 <h1>{currentprofile?.name}</h1>
                 <p>
@@ -33,6 +34,11 @@ const Userprofile = ({ slidein }) => {
             {currentuser?.result?._id === id && (
               <button className="edit-profile-btn" type='button' onClick={() => setswitch(true)}><FontAwesomeIcon icon={faPen} /> Edit Profile</button>
             )}
+          </div><br/>
+          <div>
+            
+              <button className="obtain-location-nd-weather" type='button' ><Link to="/maps" style={{textDecoration: "none"}}><FontAwesomeIcon icon={faPen} />Obtain Location</Link></button>
+           
           </div>
           <>
             {Switch ? (
@@ -46,4 +52,4 @@ const Userprofile = ({ slidein }) => {
   )
 }
 
-export default Userprofile
+export default Userprofile;

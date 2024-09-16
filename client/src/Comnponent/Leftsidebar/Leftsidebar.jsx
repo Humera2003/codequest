@@ -1,6 +1,7 @@
 import React from 'react'
 import './Leftsidebar.css'
 import { NavLink } from 'react-router-dom'
+import Createpost from '../CreatePost/createpost'
 import Globe from "../../assets/Globe.svg"
 const Leftsidebar = ({ slidein }) => {
   const slideinstyle = {
@@ -37,6 +38,11 @@ const Leftsidebar = ({ slidein }) => {
             <p >Users</p>
             </NavLink>
           </button>
+          <button className='nav-btnn'>
+            <NavLink to='/createpost' className='side-nav-links' activeclassname='active' style={{paddingLeft:"40px"}}>
+            <p >Createpost</p>
+            </NavLink>
+            </button>
         </div>
       </nav>
     </div>
